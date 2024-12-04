@@ -1,4 +1,4 @@
 # requirements.yml
 collections:
-  - source: redhat-satellite-5.0.0.tar.gz
+  - source: collections/redhat-satellite-5.0.0.tar.gz
     type: file
