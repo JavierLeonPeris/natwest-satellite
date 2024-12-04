@@ -1,0 +1,21 @@
+
+---
+- name: Playbook to create a new product role on Satellite
+  hosts: localhost
+  connection: local
+  tasks: 
+    - name: role
+      redhat.satellite.role:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ sat_url }}"
+        name: "{{ role_name }}"
+        description: "Repoadmin for {{ product_name }}"
+        organizations:
+          - "{{ sat_organization }}"
+        state: present
+        filters:
+          - permissions:
+              - view_products
+              - edit_products
+            search: "product_name = {{ product_name }}"
