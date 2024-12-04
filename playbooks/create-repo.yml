@@ -9,7 +9,7 @@
         server_url: "{{ sat_url }}"
         name: "{{ product_name }}"
         organization: "{{ sat_organization }}"
-        sync_plan: "{{ sat_sync_plan }}"
+        #sync_plan: "{{ sat_sync_plan }}"
         state: present
 
     - name: "Create repository"
@@ -22,7 +22,7 @@
         content_type: "yum"
         product: "{{ product_name }}"
         organization: "{{ sat_organization }}"
-        url: "{{ repo_url }}"
+        #url: "{{ repo_url }}"
 
     - name: "Create or update content view"
       redhat.satellite.content_view:
