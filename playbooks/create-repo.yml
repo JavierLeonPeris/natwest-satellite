@@ -1,6 +1,7 @@
 ---
 - name: Playbook to create a new custom product on Satellite
-  hosts: all
+  hosts: localhost
+  connection: local
   tasks: 
     - name: "Create new product with a sync plan"
       redhat.satellite.product:
