@@ -2,12 +2,35 @@
 - name: Playbook to create a new custom product on Satellite
   hosts: all
   tasks: 
-    - name: "Create Fedora product with a sync plan"
+    - name: "Create new product with a sync plan"
       redhat.satellite.product:
         username: "{{ username }}"
         password: "{{ password }}"
         server_url: "{{ sat_url }}"
-        name: "{ repo_name }"
+        name: "{{ product_name }}"
         organization: "{{ sat_organization }}"
         sync_plan: "{{ sat_sync_plan }}"
         state: present
+
+    - name: "Create repository"
+      redhat.satellite.repository:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ sat_url }}"
+        name: "{{ repo_name }}"
+        state: present
+        content_type: "yum"
+        product: "{{ product_name }}"
+        organization: "{{ sat_organization }}"
+        url: "{{ repo_url }}"
+
+    - name: "Create or update Fedora content view"
+      redhat.satellite.content_view:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ sat_url }}"
+        name: "cv_name"
+        organization: "{{ sat_organization }}"
+        repositories:
+          - name: "{{ repo_name }}"
+            product: "{{ product_name }}"
