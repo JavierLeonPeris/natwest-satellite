@@ -24,13 +24,24 @@
         organization: "{{ sat_organization }}"
         url: "{{ repo_url }}"
 
-    - name: "Create or update Fedora content view"
+    - name: "Create or update content view"
       redhat.satellite.content_view:
         username: "{{ username }}"
         password: "{{ password }}"
         server_url: "{{ sat_url }}"
-        name: "cv_name"
+        name: "{{ cv_name }}"
         organization: "{{ sat_organization }}"
         repositories:
           - name: "{{ repo_name }}"
             product: "{{ product_name }}"
+          
+    - name: Publish new version
+      ansible.builtin.include_role: 
+        name: redhat.satellite.content_view_publish
+      vars:
+        satellite_server_url: "{{ sat_url }}"
+        satellite_username: "{{ username }}"
+        satellite_password: "{{ password }}"
+        satellite_organization: "{{ sat_organization }}"
+        satellite_content_views:
+          - "{{ cv_name }}"
