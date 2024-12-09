@@ -22,6 +22,9 @@
 
     - name: Create internal user group
       redhat.satellite.usergroup:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ sat_url }}"
         name: "{{ int_usergroup_name }}"
         admin: false
         state: present
@@ -30,6 +33,9 @@
        
     - name: Create external user group
       redhat.satellite.external_usergroup:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        server_url: "{{ sat_url }}"
         name: "{{ ext_usergroup_name }}"
         auth_source: "{{ ldap_name }}"
         usergroup: "{{ int_usergroup_name }}"
