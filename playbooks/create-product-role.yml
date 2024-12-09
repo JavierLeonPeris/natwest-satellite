@@ -4,7 +4,7 @@
   hosts: localhost
   connection: local
   tasks: 
-    - name: role
+    - name: Create product role
       redhat.satellite.role:
         username: "{{ username }}"
         password: "{{ password }}"
@@ -18,4 +18,11 @@
           - permissions:
               - view_products
               - edit_products
-            search: "product_name = {{ product_name }}"
+            search: "name = {{ product_name }}"
+
+    #- name: Create user group
+    #  redhat.satellite.usergroup:
+    #    name: "{{ usergroup_name }}"
+    #    admin: false
+    #    state: present
+        
