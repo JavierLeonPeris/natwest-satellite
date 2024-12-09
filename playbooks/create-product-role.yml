@@ -20,9 +20,17 @@
               - edit_products
             search: "name = {{ product_name }}"
 
-    #- name: Create user group
-    #  redhat.satellite.usergroup:
-    #    name: "{{ usergroup_name }}"
-    #    admin: false
-    #    state: present
-        
+    - name: Create internal user group
+      redhat.satellite.usergroup:
+        name: "{{ int_usergroup_name }}"
+        admin: false
+        state: present
+        roles:
+          - "{{ role_name }}"
+       
+    - name: Create external user group
+      redhat.satellite.external_usergroup:
+        name: "{{ ext_usergroup_name }}"
+        auth_source: "{{ ldap_name }}"
+        usergroup: "{{ int_usergroup_name }}"
+        state: present
