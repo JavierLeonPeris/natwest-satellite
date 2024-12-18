@@ -2,3 +2,4 @@
 collections:
   - source: collections/redhat-satellite-5.0.0.tar.gz
     type: file
+  - community.sap_libs
