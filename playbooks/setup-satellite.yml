@@ -3,9 +3,9 @@
   hosts: localhost
   connection: local
   vars_files:
-    - vars/lifecycles.yml
-    - vars/content_views.yml
-    - vars/defaults.yml
+    - ../vars/lifecycles.yml
+    - ../vars/content_views.yml
+    - ../vars/defaults.yml
   tasks: 
     # - name: Execute redhat.satellite.content_credentials role
     #   ansible.builtin.import_role:
