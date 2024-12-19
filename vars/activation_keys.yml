@@ -1,0 +1,3 @@
+satellite_activation_keys:
+  - name: "RHEL7_Prod"
+    description: "RHEL 7 production activation key"

@@ -23,6 +23,6 @@
       ansible.builtin.import_role:
         name: "redhat.satellite.content_views"
 
-    # - name: execute redhat.satellite.activation_keys role
-    #   ansible.builtin.import_role:
-    #     name: "redhat.satellite.activation_keys"
+    - name: execute redhat.satellite.activation_keys role
+      ansible.builtin.import_role:
+        name: "redhat.satellite.activation_keys"
