@@ -1,0 +1,15 @@
+---
+- name: Create Satellite lifecycle environment
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create Dev lifecycle environment
+      redhat.satellite.lifecycle_environment:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "{{ satellite_url }}"
+        name: "Dev"
+        organization: "{{ satellite_organization }}"
+        prior: "Library"
+        description: "Development Environment"
+      delegate_to: localhost

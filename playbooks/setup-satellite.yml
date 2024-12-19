@@ -1,0 +1,28 @@
+---
+- name: Playbook to create a new product role on Satellite
+  hosts: localhost
+  connection: local
+  vars_files:
+    - vars/lifecycles.yml
+    - vars/content_views.yml
+    - vars/defaults.yml
+  tasks: 
+    # - name: Execute redhat.satellite.content_credentials role
+    #   ansible.builtin.import_role:
+    #     name: "redhat.satellite.content_credentials"
+
+    # - name: Execute redhat.satellite.repositories role
+    #   ansible.builtin.import_role:
+    #     name: "redhat.satellite.repositories"
+
+    - name: execute redhat.satellite.lifecycle_environments role
+      ansible.builtin.import_role:
+        name: "redhat.satellite.lifecycle_environments"
+
+    - name: execute content_views role
+      ansible.builtin.import_role:
+        name: "redhat.satellite.content_views"
+
+    # - name: execute redhat.satellite.activation_keys role
+    #   ansible.builtin.import_role:
+    #     name: "redhat.satellite.activation_keys"

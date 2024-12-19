@@ -1,0 +1,14 @@
+---
+- name: Create a new content view
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create content view
+      redhat.satellite.content_view:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "{{ satellite_url }}"
+        name: "{{ satellite_cv_name }}"
+        organization: "{{ satellite_organization }}"
+        description: "{{ satellite_cv_description }}"
+        state: present
