@@ -1,5 +1,5 @@
 ---
-- name: Playbook to create a new product role on Satellite
+- name: Playbook to configure Satellite
   hosts: localhost
   connection: local
   vars_files:
